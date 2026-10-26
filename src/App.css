@@ -328,7 +328,7 @@
 }
 
 .hero {
-  padding-top: 96px;
+  padding-top: 144px;
   padding-bottom: 64px;
 }
 
@@ -1307,6 +1307,10 @@
   .section,
   .tagline-section {
     padding-block: 64px;
+  }
+
+  .hero {
+    padding-top: 120px;
   }
 
   .proof-section {
