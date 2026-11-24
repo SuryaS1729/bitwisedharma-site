@@ -50,7 +50,7 @@ export function TaglineReveal() {
       id="principle"
     >
       <div className="container">
-        <p className="eyebrow eyebrow-dark">What we believe</p>
+        <p className="meta meta-dark">What we believe</p>
         <h2
           id="tagline-heading"
           ref={ref}

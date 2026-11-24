@@ -3,7 +3,6 @@ import {
   ArrowUpRight,
   Browser,
   CalendarCheck,
-  Check,
   Compass,
   DeviceMobile,
   Folder,
@@ -12,13 +11,14 @@ import {
   Stack,
   UsersThree,
 } from './components/Icons'
+import { BitField } from './components/BitField'
 import { Nav } from './components/Nav'
 import { Reveal } from './components/Reveal'
 import { TaglineReveal } from './components/TaglineReveal'
 import './App.css'
 
-const MAILTO =
-  'mailto:bitwisedharma@gmail.com?subject=Project%20inquiry%20for%20BitwiseDharma'
+const EMAIL = 'bitwisedharma@gmail.com'
+const MAILTO = `mailto:${EMAIL}?subject=Project%20inquiry%20for%20BitwiseDharma`
 
 const CURRENT_YEAR = new Date().getFullYear()
 
@@ -40,26 +40,31 @@ const proofPoints = [
   },
 ]
 
+/* Flags, not bullet points: each capability is one bit. */
 const benefits = [
   {
+    flag: '0x01',
     Icon: Compass,
     title: 'Decisions that survive the build',
     description:
       'Product design and engineering sit in the same room, so what gets designed is what gets shipped.',
   },
   {
+    flag: '0x02',
     Icon: Browser,
     title: 'Tools people actually use',
     description:
       'Web apps, customer portals, and internal tools built around the work your team already does.',
   },
   {
+    flag: '0x04',
     Icon: DeviceMobile,
     title: 'One build, two platforms',
     description:
       'iOS and Android apps that share logic where it helps and stay native where it matters.',
   },
   {
+    flag: '0x08',
     Icon: Stack,
     title: 'A system you can extend',
     description:
@@ -69,19 +74,19 @@ const benefits = [
 
 const steps = [
   {
-    number: '01',
+    when: 'Day 0',
     title: 'Tell us the problem',
     description:
       'A thirty minute call about what you are trying to solve, who it is for, and what has already been tried. No pitch deck needed.',
   },
   {
-    number: '02',
+    when: 'Week 1',
     title: 'Scope the smallest useful version',
     description:
-      'We write a short plan with milestones, tradeoffs, and a fixed price for the first build. You approve the number before work starts.',
+      'A short plan with milestones, tradeoffs, and a fixed price for the first build. You approve the number before work starts.',
   },
   {
-    number: '03',
+    when: 'Every Friday',
     title: 'Build in weekly loops',
     description:
       'You see working software every week, give feedback on the real thing, and we ship when it is ready.',
@@ -138,87 +143,6 @@ const faqs = [
   },
 ]
 
-function HeroVisual() {
-  return (
-    <div className="hero-visual" aria-hidden="true">
-      <div className="mock-browser">
-        <div className="mock-chrome">
-          <span className="mock-dots">
-            <span className="mock-dot" />
-            <span className="mock-dot" />
-            <span className="mock-dot" />
-          </span>
-          <span className="mock-chrome-label">studio / build</span>
-          <span className="mock-pill">Week 06</span>
-        </div>
-
-        <div className="mock-body">
-          <p className="mock-kicker">Current build</p>
-          <p className="mock-title">Onboarding flow</p>
-          <div className="mock-progress">
-            <span />
-          </div>
-
-          <ul className="mock-tasks">
-            <li>
-              <span className="mock-check is-done">
-                <Check size={12} />
-              </span>
-              Welcome screen
-            </li>
-            <li>
-              <span className="mock-check is-done">
-                <Check size={12} />
-              </span>
-              Account setup
-            </li>
-            <li>
-              <span className="mock-check">
-                <span className="mock-check-dot" />
-              </span>
-              First project
-            </li>
-          </ul>
-
-          <div className="mock-demo">
-            <span className="mock-demo-icon">
-              <CalendarCheck size={16} />
-            </span>
-            <div className="mock-demo-copy">
-              <p>Demo Friday</p>
-              <span>Working build, 11:30 IST</span>
-            </div>
-            <ArrowUpRight size={16} />
-          </div>
-        </div>
-      </div>
-
-      <div className="mock-side">
-        <div className="mock-tokens">
-          <p className="mock-kicker">Design tokens</p>
-          <div className="mock-swatches">
-            <span className="mock-swatch mock-swatch-accent" />
-            <span className="mock-swatch mock-swatch-ink" />
-            <span className="mock-swatch mock-swatch-line" />
-          </div>
-          <div className="mock-type-row">
-            <span className="mock-aa">Aa</span>
-            <span>Heading 60 / Body 16</span>
-          </div>
-        </div>
-
-        <div className="mock-ship">
-          <span className="mock-ship-icon">
-            <Check size={16} />
-          </span>
-          <p>Demo ready</p>
-          <span>Shipped to review</span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function App() {
   return (
     <>
@@ -230,72 +154,68 @@ function App() {
 
       <main id="main">
         <section className="hero" id="top" aria-labelledby="hero-heading">
-          <div className="container hero-inner">
-            <p className="eyebrow">
-              <span className="eyebrow-dot" aria-hidden="true" />
-              Independent software studio, Bengaluru
-            </p>
+          <div className="container hero-grid">
+            <div className="hero-copy">
+              <p className="meta">
+                <span className="meta-bit" aria-hidden="true" />
+                Independent software studio · Bengaluru, IN
+              </p>
 
-            <h1 id="hero-heading" className="hero-heading">
-              One senior team,
-              <br />
-              from first sketch
-              <br />
-              to shipped product.
-            </h1>
+              <h1 id="hero-heading" className="hero-heading">
+                One senior team, from first sketch to{' '}
+                <mark className="marker">shipped product.</mark>
+              </h1>
 
-            <p className="hero-sub">
-              BitwiseDharma is an independent studio in Bengaluru. We design and
-              build web and mobile products for teams that need fewer handoffs
-              and more working software.
-            </p>
+              <p className="hero-sub">
+                We design and build web and mobile products for teams that need
+                fewer handoffs and more working software.
+              </p>
 
-            <div className="hero-actions">
-              <a className="button button-primary" href={MAILTO}>
-                Start a project
-                <ArrowRight size={20} />
-              </a>
+              <div className="hero-actions">
+                <a className="button button-signal" href={MAILTO}>
+                  Start a project
+                  <ArrowRight size={18} />
+                </a>
+                <a className="text-link" href="#approach">
+                  See how we work
+                </a>
+              </div>
+
+              <p className="hero-note">
+                Replies within two business days, from the people who will build
+                it.
+              </p>
             </div>
 
-            <div className="hero-proof">
-              <span>
-                <Check size={16} />
-                Direct access to the people building your product.
-              </span>
-              <span>
-                <Check size={16} />
-                We reply within two business days.
-              </span>
-            </div>
-
-            <HeroVisual />
+            <figure className="hero-figure">
+              <div className="bitfield">
+                <BitField />
+              </div>
+              <figcaption>
+                <span>fig. 01 — the studio, in bits</span>
+                <span className="hero-figure-hint">move to flip</span>
+              </figcaption>
+            </figure>
           </div>
         </section>
 
-        <section className="proof-section" aria-label="What you can expect">
-          <div className="container">
-            <Reveal>
-              <div className="proof-panel">
-                {proofPoints.map(({ Icon, title, description }) => (
-                  <div className="proof-item" key={title}>
-                    <span className="proof-icon">
-                      <Icon size={20} />
-                    </span>
-                    <div>
-                      <p className="proof-title">{title}</p>
-                      <p className="proof-copy">{description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+        <section className="ledger" aria-label="What you can expect">
+          <div className="container ledger-grid">
+            {proofPoints.map(({ Icon, title, description }, index) => (
+              <Reveal className="ledger-item" key={title} delay={index * 60}>
+                <span className="ledger-index">0{index + 1}</span>
+                <Icon size={20} />
+                <p className="ledger-title">{title}</p>
+                <p className="ledger-copy">{description}</p>
+              </Reveal>
+            ))}
           </div>
         </section>
 
         <section className="section" id="studio" aria-labelledby="studio-heading">
           <div className="container">
             <Reveal className="section-head">
-              <p className="eyebrow">Studio</p>
+              <p className="meta">§ 1 — Studio</p>
               <h2 id="studio-heading">Fewer handoffs. More working software.</h2>
               <p className="section-intro">
                 We keep the team small and the feedback loop short, so decisions
@@ -303,23 +223,24 @@ function App() {
               </p>
             </Reveal>
 
-            <div className="benefit-grid">
-              {benefits.map(({ Icon, title, description }, index) => (
-                <Reveal
-                  key={title}
-                  className="benefit-cell"
-                  delay={index * 50}
-                >
-                  <article className="benefit-card">
-                    <span className="benefit-icon">
-                      <Icon size={20} />
-                    </span>
+            <div className="flag-grid">
+              {benefits.map(({ flag, Icon, title, description }, index) => (
+                <Reveal key={title} className="flag-cell" delay={index * 50}>
+                  <article className="flag-card">
+                    <div className="flag-top">
+                      <Icon size={22} />
+                      <span className="flag-code">{flag}</span>
+                    </div>
                     <h3>{title}</h3>
                     <p>{description}</p>
                   </article>
                 </Reveal>
               ))}
             </div>
+            <p className="flag-sum" aria-hidden="true">
+              0x01 | 0x02 | 0x04 | 0x08 = <strong>0x0F</strong>
+              <span> · all of it, one team</span>
+            </p>
           </div>
         </section>
 
@@ -332,7 +253,7 @@ function App() {
         >
           <div className="container">
             <Reveal className="section-head">
-              <p className="eyebrow">Approach</p>
+              <p className="meta">§ 2 — Approach</p>
               <h2 id="approach-heading">A short path from problem to shipped.</h2>
               <p className="section-intro">
                 No long discovery phase. No pitch theatre. We agree on the
@@ -340,30 +261,33 @@ function App() {
               </p>
             </Reveal>
 
-            <div className="step-grid">
+            <ol className="timeline">
               {steps.map((step, index) => (
-                <Reveal key={step.number} className="step-cell" delay={index * 60}>
-                  <article className="step-card">
-                    <span className="step-number">{step.number}</span>
+                <li className="timeline-step" key={step.title}>
+                  <Reveal delay={index * 80}>
+                    <div className="timeline-rail" aria-hidden="true">
+                      <span className="timeline-node" />
+                    </div>
+                    <p className="timeline-when">{step.when}</p>
                     <h3>{step.title}</h3>
-                    <p>{step.description}</p>
-                  </article>
-                </Reveal>
+                    <p className="timeline-copy">{step.description}</p>
+                  </Reveal>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
         </section>
 
         <section
-          className="section section-surface"
+          className="section section-band"
           id="handover"
           aria-labelledby="handover-heading"
         >
           <div className="container handover-grid">
             <Reveal className="handover-copy">
-              <p className="eyebrow">After launch</p>
+              <p className="meta">§ 3 — After launch</p>
               <h2 id="handover-heading">The handover is part of the build.</h2>
-              <p className="handover-lead">
+              <p className="section-intro">
                 We do not disappear after the launch. Your repository, design
                 files, and written decisions are yours from week one, with a
                 walkthrough when the work is done.
@@ -371,8 +295,8 @@ function App() {
               <ul className="check-list">
                 {handoverPoints.map((point) => (
                   <li key={point}>
-                    <span className="check-list-icon">
-                      <Check size={14} />
+                    <span className="check-box" aria-hidden="true">
+                      x
                     </span>
                     {point}
                   </li>
@@ -380,28 +304,37 @@ function App() {
               </ul>
             </Reveal>
 
-            <Reveal className="handover-art" delay={100}>
-              <div className="file-window" aria-hidden="true">
-                <div className="file-chrome">
-                  <span className="mock-dots">
-                    <span className="mock-dot" />
-                    <span className="mock-dot" />
-                    <span className="mock-dot" />
+            <Reveal className="terminal-wrap" delay={100}>
+              <div className="terminal" aria-hidden="true">
+                <div className="terminal-bar">
+                  <span className="terminal-dots">
+                    <span />
+                    <span />
+                    <span />
                   </span>
-                  <span className="file-title">bitwisedharma / project</span>
-                  <span className="file-badge">Yours from week one</span>
+                  <span>your-org / product</span>
                 </div>
-                <pre className="file-tree">{`bitwisedharma/
-  app/
-    components/
-    routes/
-  design/
-    tokens/
-    screens/
-  docs/
-    decisions.md
-    runbook.md
-  README.md`}</pre>
+                <pre className="terminal-body">
+                  <span className="t-dim">$ </span>git log --oneline -4{'\n'}
+                  <span className="t-hash">a41f2c9</span> docs: handover runbook{'\n'}
+                  <span className="t-hash">9be07d1</span> feat: onboarding flow{'\n'}
+                  <span className="t-hash">5c3a8e0</span> design: tokens v2{'\n'}
+                  <span className="t-hash">01d7f44</span> chore: repo in your org{'\n'}
+                  {'\n'}
+                  <span className="t-dim">$ </span>tree -L 2{'\n'}
+                  {`app/
+├─ components/
+└─ routes/
+design/
+├─ tokens/
+└─ screens/
+docs/
+├─ decisions.md
+└─ runbook.md
+README.md`}
+                  {'\n\n'}
+                  <span className="t-ok">✓ owner: you, since week one</span>
+                </pre>
               </div>
             </Reveal>
           </div>
@@ -410,61 +343,50 @@ function App() {
         <section className="section" id="faq" aria-labelledby="faq-heading">
           <div className="container faq-grid">
             <Reveal className="faq-head">
-              <p className="eyebrow">FAQ</p>
-              <h2 id="faq-heading">
-                Questions we hear before the first call.
-              </h2>
+              <p className="meta">§ 4 — FAQ</p>
+              <h2 id="faq-heading">Questions we hear before the first call.</h2>
               <p className="section-intro">
-                If yours is not here,{' '}
-                <a href={MAILTO}>write to us</a>. We answer every note.
+                If yours is not here, <a href={MAILTO}>write to us</a>. We answer
+                every note.
               </p>
             </Reveal>
 
             <div className="faq-list">
               {faqs.map((faq, index) => (
-                <Reveal key={faq.question} className="faq-cell" delay={index * 35}>
-                  <details className="faq-item">
-                    <summary>
-                      <span>{faq.question}</span>
-                      <span className="faq-icon" aria-hidden="true">
-                        <span />
-                        <span />
-                      </span>
-                    </summary>
-                    <p>{faq.answer}</p>
-                  </details>
-                </Reveal>
+                <details className="faq-item" key={faq.question}>
+                  <summary>
+                    <span className="faq-index" aria-hidden="true">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="faq-q">{faq.question}</span>
+                    <span className="faq-icon" aria-hidden="true" />
+                  </summary>
+                  <p>{faq.answer}</p>
+                </details>
               ))}
             </div>
           </div>
         </section>
 
-        <section
-          className="section cta-section"
-          id="contact"
-          aria-labelledby="cta-heading"
-        >
+        <section className="cta" id="contact" aria-labelledby="cta-heading">
           <div className="container">
-            <Reveal>
-              <div className="cta-panel">
-                <p className="eyebrow eyebrow-dark">Next step</p>
-                <h2 id="cta-heading">Tell us what you are building.</h2>
+            <Reveal className="cta-inner">
+              <p className="meta">§ 5 — Next step</p>
+              <h2 id="cta-heading">Tell us what you are building.</h2>
+              <div className="cta-row">
                 <p className="cta-copy">
                   A short note is enough. We will reply with honest questions and
                   a clear next step.
                 </p>
                 <div className="cta-actions">
-                  <a className="button button-primary" href={MAILTO}>
+                  <a className="button button-ink" href={MAILTO}>
                     Start a project
-                    <ArrowRight size={20} />
+                    <ArrowUpRight size={18} />
+                  </a>
+                  <a className="cta-email" href={MAILTO}>
+                    {EMAIL}
                   </a>
                 </div>
-                <p className="cta-alt">
-                  Or write to <a href={MAILTO}>bitwisedharma@gmail.com</a>
-                </p>
-                <p className="cta-meta">
-                  Based in Bengaluru. Working with teams remotely.
-                </p>
               </div>
             </Reveal>
           </div>
@@ -497,7 +419,7 @@ function App() {
               <p className="footer-label">Contact</p>
               <a href={MAILTO}>
                 <Mail size={16} />
-                bitwisedharma@gmail.com
+                {EMAIL}
               </a>
               <p>
                 <MapPin size={16} />
@@ -506,9 +428,13 @@ function App() {
             </div>
           </div>
 
+          <p className="footer-wordmark" aria-hidden="true">
+            bitwise<span>dharma</span>
+          </p>
+
           <div className="footer-bottom">
-            <p>Copyright © {CURRENT_YEAR} The BitwiseDharma Company.</p>
-            <a href="#top">Back to top</a>
+            <p>© {CURRENT_YEAR} The BitwiseDharma Company.</p>
+            <a href="#top">Back to top ↑</a>
           </div>
         </div>
       </footer>

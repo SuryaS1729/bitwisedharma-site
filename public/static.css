@@ -1,13 +1,14 @@
 :root {
-  --bg: #ffffff;
-  --surface: #f6f6f7;
-  --ink: #111111;
-  --muted: #555555;
-  --soft: #8a8a8a;
-  --border: #e5e5e5;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --radius-sm: 8px;
+  --bg: #f3f3ef;
+  --surface: #eaeae4;
+  --ink: #0e0e0c;
+  --muted: #4f4f49;
+  --soft: #6a6a63;
+  --border: #d3d3cb;
+  --signal: #d4ff3a;
+  --accent: #0e0e0c;
+  --accent-hover: #26261f;
+  --radius-sm: 4px;
   --radius-lg: 16px;
   --ease: cubic-bezier(0.32, 0.72, 0, 1);
 }
@@ -27,12 +28,18 @@ body {
 }
 
 a {
-  color: var(--accent);
-  text-underline-offset: 2px;
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
-a:hover {
-  color: var(--accent-hover);
+a:not(.brand):not(.button):hover {
+  background: var(--signal);
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--ink);
 }
 
 :focus-visible {
@@ -69,12 +76,13 @@ a:hover {
   display: grid;
   place-items: center;
   border-radius: var(--radius-sm);
-  background: var(--accent);
-  color: #ffffff;
+  background: var(--ink);
+  color: var(--signal);
+  font-family: 'Geist Mono', ui-monospace, monospace;
   font-size: 14px;
   line-height: 20px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: -0.04em;
 }
 
 main {
@@ -83,17 +91,20 @@ main {
 
 .eyebrow {
   margin: 0 0 16px;
-  font-size: 14px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 13px;
   line-height: 20px;
-  font-weight: 600;
-  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--soft);
 }
 
 h1 {
   margin: 0;
+  font-family: 'Bricolage Grotesque', 'Geist', ui-sans-serif, sans-serif;
   font-size: 36px;
   line-height: 40px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.04em;
   text-wrap: balance;
 }
@@ -111,6 +122,7 @@ h1 {
 
 .article h2 {
   margin: 40px 0 12px;
+  font-family: 'Bricolage Grotesque', 'Geist', ui-sans-serif, sans-serif;
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
@@ -151,8 +163,8 @@ h1 {
   justify-content: center;
   padding: 8px 12px;
   border-radius: var(--radius-sm);
-  background: var(--accent);
-  color: #ffffff;
+  background: var(--ink);
+  color: var(--signal);
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -164,7 +176,7 @@ h1 {
 
 .button:hover {
   background: var(--accent-hover);
-  color: #ffffff;
+  color: var(--signal);
 }
 
 .button:active {
@@ -195,7 +207,10 @@ h1 {
 
 .site-foot a:hover {
   color: var(--ink);
+  background: none;
+  text-decoration: underline;
 }
+
 
 .not-found {
   padding-block: 96px 128px;
@@ -206,7 +221,7 @@ h1 {
   font-family: 'Geist Mono', ui-monospace, monospace;
   font-size: 14px;
   line-height: 20px;
-  color: var(--accent);
+  color: var(--soft);
 }
 
 .not-found h1 {
