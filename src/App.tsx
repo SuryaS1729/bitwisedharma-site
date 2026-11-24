@@ -119,7 +119,7 @@ const faqs = [
   {
     question: 'Do you work with teams outside India?',
     answer:
-      'Yes. We are based in Hyderabad and work remotely with teams in other time zones. We agree on a shared overlap window before we start.',
+      'Yes. We are based in Bengaluru and work remotely with teams in other time zones. We agree on a shared overlap window before we start.',
   },
   {
     question: 'Do we own the work?',
@@ -233,7 +233,7 @@ function App() {
           <div className="container hero-inner">
             <p className="eyebrow">
               <span className="eyebrow-dot" aria-hidden="true" />
-              Independent software studio, Hyderabad
+              Independent software studio, Bengaluru
             </p>
 
             <h1 id="hero-heading" className="hero-heading">
@@ -245,7 +245,7 @@ function App() {
             </h1>
 
             <p className="hero-sub">
-              BitwiseDharma is an independent studio in Hyderabad. We design and
+              BitwiseDharma is an independent studio in Bengaluru. We design and
               build web and mobile products for teams that need fewer handoffs
               and more working software.
             </p>
@@ -463,7 +463,7 @@ function App() {
                   Or write to <a href={MAILTO}>bitwisedharma@gmail.com</a>
                 </p>
                 <p className="cta-meta">
-                  Based in Hyderabad. Working with teams remotely.
+                  Based in Bengaluru. Working with teams remotely.
                 </p>
               </div>
             </Reveal>
@@ -501,7 +501,7 @@ function App() {
               </a>
               <p>
                 <MapPin size={16} />
-                Hyderabad, Telangana, India
+                Bengaluru, Karnataka, India
               </p>
             </div>
           </div>

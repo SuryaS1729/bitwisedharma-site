@@ -154,7 +154,7 @@ export function Nav() {
             </a>
             <p className="menu-location">
               <MapPin size={16} />
-              Hyderabad, Telangana, India
+              Bengaluru, Karnataka, India
             </p>
           </div>
         </div>
